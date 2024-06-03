@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>じゃんけんゲーム</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="header">
+    <h1>じゃんけんゲーム</h1>
+    <div id="result" class="result"></div>   
+    <div id="score"勝:0, 敗:0, 分:0></div>     
+    <button type="button" onclick="resetGame()">成績をリセット</button>
+  </div>
+  
+  <div class="contents">
+    <div class="contents-item">
+      <img src="./img/janken_gu.png" alt="">
+      <button class="janken-button" onclick="playGame(0)">グー</button>
+    </div>
+    <div class="contents-item">
+      <img src="./img/janken_choki.png" alt="">
+      <button class="janken-button" onclick="playGame(1)">チョキ</button>
+    </div>
+    <div class="contents-item">
+      <img src="./img/janken_pa.png" alt="">
+      <button class="janken-button" onclick="playGame(2)">パー</button>
+    </div>
+  </div>
+
+  <script>
+    let drawCount = 0;
+    let winCount = 0;
+    let loseCount = 0;
+
+    function playGame(userChoice) {
+      const playChoice = ["グー", "チョキ", "パー"];
+      const comChoice = Math.floor(Math.random() * 3);
+
+      let resultMessage = `プレイヤーの手:${playChoice[userChoice]}<br>コンピュータの手:${playChoice[comChoice]}<br>`;
+      
+      if (userChoice == comChoice) {
+        resultMessage += "引き分けです！";
+        drawCount++;
+      } else if ((userChoice === 0 && comChoice === 1) || (userChoice === 1 && comChoice === 2) || (userChoice === 2 && comChoice === 0)) {
+        resultMessage += '<span style="color: red;">"あなたの勝ちです！おめでとうございます！"</span>';
+        winCount++;
+      } else {
+        resultMessage += '<span style="color: blue;">"あなたの負けです！残念！"</span>';
+        loseCount++;
+      }
+      document.getElementById("result").innerHTML = resultMessage;
+      document.getElementById("score").innerHTML = `勝 : ${winCount}, 負 : ${loseCount}, 分 : ${drawCount}`;
+    }
+
+    function resetGame() {                                   //成績をリセットする
+      document.getElementById("result").innerHTML = "";     //結果をクリア
+      drawCount = 0;
+      winCount = 0;
+      loseCount;
+      document.getElementById("score").innerHTML = `勝 : 0, 負 : 0, 分 : 0`;
+    }
+  </script>
+</body>
+</html>

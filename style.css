@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  background-color: #e0ffff;
+}
+
+.header {
+  font-size: 20px;
+  text-align: center;
+}
+
+.header h1 {
+  margin-top: 20px;
+  color: green;
+}
+
+
+.contents {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;    /* 子要素を下部で揃える */
+}
+
+.contents-item {
+  display: flex;            /* 横方向に並べる */
+  flex-direction: column;   /* 上から下へ縦方向に並べる */
+  align-items: center;      /* 中央揃え */
+  padding: 20px 10px;
+}
+
+button {
+  padding: 10px 20px;           /* ボタンのパディングを調整 */
+  font-size: 16px;              /* ボタンのフォントサイズを調整 */
+  cursor: pointer;              /* ボタンのカーソルをポインタに変更 */
+  border: 1px solid ;                 /* ボタンの枠線 */
+  background-color: #f0f0f0;  /* ボタンの背景色を設定 */
+  border-radius: 5px;           /* ボタンの角を丸める */
+  transition: all 0.5s;
+}
+
+button:hover {
+  background-color: #dcdcdc;
+}
+
+.contents-item img {
+  width: 33%;                   /* 画像を等間隔に配置 */
+  margin-bottom: 20px;
+}
+
+#result {
+  text-align: center;
+  line-height: 30px;
+  margin: 20px 0;
+}
+
